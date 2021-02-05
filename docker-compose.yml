@@ -6,7 +6,7 @@ services:
     volumes:
       - db_data:/var/lib/mysql
       # ダンプしたMySqlファイルを立ち上げ時にマウントする時はこれを使う↓
-      #- ./db-data/mysql.dump.sql:/docker-entrypoint-initdb.d/install_wordpress.sql
+      # - ./db_data/mysql.dump.sql:/docker-entrypoint-initdb.d/install_wordpress.sql
     restart: always
     env_file: .env
 
