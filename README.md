@@ -1,8 +1,25 @@
 # Build
 
+`.env.sample` をコピーし、 `.env `に書き換えた上で値を入れる。
+
+```
+WORDPRESS_DB_USER=hoge
+WORDPRESS_DB_PASSWORD=hoge
+
+MYSQL_ROOT_PASSWORD=hoge
+MYSQL_DATABASE=hoge
+MYSQL_USER=hoge
+MYSQL_PASSWORD=hoge
+```
+
 ```=shell
 docker-compose up -d
 ```
+
+立ち上げが正常に完了したら下記リンクで開く
+
+wordpress : `http://localhost:8000`  
+phpmyadmin : `http://localhost:8080`
 
 # MySQL Dump
 
