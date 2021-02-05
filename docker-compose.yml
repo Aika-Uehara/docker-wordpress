@@ -1,0 +1,28 @@
+version: "3"
+services:
+  db:
+    container_name: db
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+      # ダンプしたMySqlファイルを立ち上げ時にマウントする時はこれを使う↓
+      #- ./db-data/mysql.dump.sql:/docker-entrypoint-initdb.d/install_wordpress.sql
+    restart: always
+    env_file: .env
+
+  wordpress:
+    container_name: wordpress
+    depends_on:
+      - db
+    build: ./
+    ports:
+      - "8000:80"
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+    env_file: .env
+    volumes:
+      - ./themes/:/var/www/html/wp-content/themes/
+volumes:
+  db_data:
+    driver: local
